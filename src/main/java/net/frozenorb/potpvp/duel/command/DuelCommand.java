@@ -115,7 +115,7 @@ public final class DuelCommand {
         target.sendMessage(ChatColor.RED + sender.getName() + ChatColor.WHITE + " has sent you a " + kitType.getColoredDisplayName() + ChatColor.WHITE + " duel.");
         target.spigot().sendMessage(createInviteNotification(sender.getName()));
 
-        sender.sendMessage(ChatColor.GREEN + "Successfully sent a " + kitType.getColoredDisplayName() + ChatColor.GREEN + " duel invite to " + ChatColor.GREEN + "" + ChatColor.BOLD + target.getName() + ChatColor.GREEN + ".");
+        sender.sendMessage(ChatColor.WHITE + "Successfully sent a " + kitType.getColoredDisplayName() + ChatColor.WHITE + " duel invite to " + ChatColor.RED + target.getName() + ChatColor.WHITE + ".");
         duelHandler.insertInvite(new PlayerDuelInvite(sender, target, kitType));
     }
 
@@ -151,7 +151,7 @@ public final class DuelCommand {
         targetParty.message(ChatColor.RED + sender.getName() + "'s Party (" + senderParty.getMembers().size() + ")" + ChatColor.WHITE + " has sent you a " + kitType.getColoredDisplayName() + ChatColor.WHITE + " duel.");
         Bukkit.getPlayer(targetParty.getLeader()).spigot().sendMessage(createInviteNotification(sender.getName()));
 
-        sender.sendMessage(ChatColor.GREEN + "Successfully sent a " + kitType.getColoredDisplayName() + ChatColor.GREEN + " duel invite to " + ChatColor.GREEN + ChatColor.BOLD + targetPartyLeader + ChatColor.GREEN + "'s party" + ChatColor.GREEN + ".");
+        sender.sendMessage(ChatColor.WHITE + "Successfully sent a " + kitType.getColoredDisplayName() + ChatColor.WHITE + " duel invite to " + ChatColor.RED + targetPartyLeader + ChatColor.WHITE + "'s party" + ChatColor.GREEN + ".");
         duelHandler.insertInvite(new PartyDuelInvite(senderParty, targetParty, kitType));
     }
 
