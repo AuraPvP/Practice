@@ -36,7 +36,7 @@ final class MatchParticipantLayoutProvider implements BiConsumer<Player, TabLayo
                 if (!duel) {
                     tabLayout.set(0, 3, ChatColor.GREEN + ChatColor.BOLD.toString() + "Team " + ChatColor.GREEN + "(" + ourTeam.getAliveMembers().size() + "/" + ourTeam.getAllMembers().size() + ")");
                 } else {
-                    tabLayout.set(1, 2, ChatColor.LIGHT_PURPLE + ChatColor.BOLD.toString() + "Match");
+                    tabLayout.set(1, 2, ChatColor.RED + ChatColor.BOLD.toString() + "Match");
                     tabLayout.set(0, 3, ChatColor.GREEN + ChatColor.BOLD.toString() + "You");
                 }
                 renderTeamMemberOverviewEntries(tabLayout, ourTeam, 0, 4, ChatColor.GREEN);

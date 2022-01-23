@@ -1,0 +1,12 @@
+Mongo:
+  URI: 'mongodb://uywl2pvav6kgndvigmvh:yOmyIoUUhHhGhTagXP10@beooqj6vzhizedz-mongodb.services.clever-cloud.com:27017/beooqj6vzhizedz'
+  Database: beooqj6vzhizedz
+Redis:
+  Host: "redis-18518.c273.us-east-1-2.ec2.cloud.redislabs.com"
+  Port: 18518
+  Authentication:
+    Enabled: true
+    Password: "pqYl8xJC4MJFCzGGij7Dw5EeF7gcIvd3"
+Practice:
+  Scoreboard-Header: "&5&lEU Practice"
+  Matches-Required-Ranked: 10
