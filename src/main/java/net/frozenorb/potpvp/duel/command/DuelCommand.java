@@ -156,8 +156,8 @@ public final class DuelCommand {
     }
 
     private static TextComponent[] createInviteNotification(String sender) {
-        TextComponent firstPart = new TextComponent("You can");
-        TextComponent secondPart = new TextComponent(" click on this message to accept the duel");
+        TextComponent firstPart = new TextComponent(ChatColor.GRAY + "You can");
+        TextComponent secondPart = new TextComponent(ChatColor.GRAY + " click on this message to accept the duel");
 
         firstPart.setColor(net.md_5.bungee.api.ChatColor.WHITE);
         secondPart.setColor(net.md_5.bungee.api.ChatColor.WHITE);
