@@ -237,7 +237,7 @@ final class MatchScoreGetter implements BiConsumer<Player, LinkedList<String>> {
                 }
             } else {
                 namePrefix = "&7&m";
-                healthStr = "&4RIP";
+                healthStr = "&4dead";
                 healsStr = "";
             }
 
