@@ -134,7 +134,7 @@ final class MatchScoreGetter implements BiConsumer<Player, LinkedList<String>> {
             if ((ourTeam.getAliveMembers().size() + otherTeam.getAliveMembers().size()) == 1) {
                 renderMatchOverLines(scores);
             } else {
-                render1v1MatchLines(scores, otherTeam);
+                render1v1MatchLines(scores, otherTeam, match);
                 renderMetaLines(scores, match, participant);
                 renderBoxingMatchLines(scores, player, ourTeam, otherTeam);
                 renderPearlFightMatchLines(scores, player, ourTeam, otherTeam);
@@ -173,9 +173,11 @@ final class MatchScoreGetter implements BiConsumer<Player, LinkedList<String>> {
         return false;
     }
 
-    private void render1v1MatchLines(List<String> scores, MatchTeam otherTeam) {
+    private void render1v1MatchLines(List<String> scores, MatchTeam otherTeam, Match match) {
         scores.add("&cOpponent: &f" + PotPvPND.getInstance().getUuidCache().name(otherTeam.getFirstMember()));
-        }
+        scores.add("&cLadder: &f" + match.getKitType().getId());
+        scores.add("&cArena: &f" + match.getArena().getSchematic());
+    }
 
     private void render2v2MatchLines(List<String> scores, MatchTeam ourTeam, MatchTeam otherTeam, Player player, HealingMethod healingMethod) {
         // 2v2, but potentially 1v2 / 1v1 if players have died
@@ -325,6 +327,9 @@ final class MatchScoreGetter implements BiConsumer<Player, LinkedList<String>> {
 
         // spectators don't have any bold entries on their scoreboard
         scores.add("&cDuration: &f" + formattedDuration);
+
+        scores.remove("&cLadder: &f" + match.getKitType().getId());
+        scores.remove("&cArena: &f" + match.getArena().getSchematic());
     }
 
   private void renderBoxingMatchLines(List<String> scores, Player player, MatchTeam ourTeam, MatchTeam otherTeam) {
@@ -358,7 +363,7 @@ final class MatchScoreGetter implements BiConsumer<Player, LinkedList<String>> {
             return;
 
         String you = MatchPearlFightListener.getLivesIcon(MatchPearlFightListener.getLivesMap().getOrDefault(player.getUniqueId(), 3));
-        String them = MatchPearlFightListener.getLivesIcon(MatchPearlFightListener.getLivesMap().getOrDefault(match.getTeams().get(1).getFirstMember(), 3));
+        String them = MatchPearlFightListener.getLivesIcon(MatchPearlFightListener.getLivesMap().getOrDefault(otherTeam.getFirstMember(), 3));
         scores.add("");
         scores.add("&cLives:");
         scores.add(" &cYou&7: &f" + you);

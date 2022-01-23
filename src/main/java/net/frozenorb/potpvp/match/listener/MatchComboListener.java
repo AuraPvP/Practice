@@ -26,7 +26,7 @@ public class MatchComboListener implements Listener {
                     p.setMaximumNoDamageTicks(noDamageTicks);
                 }));
 
-        for ( UUID uuid : match.getAllPlayers() ) {
+        for (UUID uuid : match.getAllPlayers() ) {
             Player player = Bukkit.getPlayer(uuid);
             ((CraftPlayer)player).getHandle().setKbProfile(SpigotConfig.getKbProfileByName("Combo"));
         }
