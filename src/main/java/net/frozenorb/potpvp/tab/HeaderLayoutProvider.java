@@ -18,9 +18,9 @@ final class HeaderLayoutProvider implements BiConsumer<Player, TabLayout> {
             tabLayout.set(1, 0, CC.translate("&4&lNA Practice"));
             tabLayout.set(0, 1, CC.translate("&cOnline: &f" + Bukkit.getOnlinePlayers().size()));
             tabLayout.set(2, 1, ChatColor.GRAY + "&cFighting: &f" + PotPvPND.getInstance().getCache().getFightsCount());
-            tabLayout.set(0, 20, ChatColor.GRAY + "" + ChatColor.ITALIC + "smoked.vip");
-            tabLayout.set(1, 20, ChatColor.GRAY + "" + ChatColor.ITALIC + "store.smoked.vip");
-            tabLayout.set(2, 20, ChatColor.GRAY + "" + ChatColor.ITALIC + "www.smoked.vip");
+            tabLayout.set(0, 19, ChatColor.GRAY + "" + ChatColor.ITALIC + "smoked.vip");
+            tabLayout.set(1, 19, ChatColor.GRAY + "" + ChatColor.ITALIC + "store.smoked.vip");
+            tabLayout.set(2, 19, ChatColor.GRAY + "" + ChatColor.ITALIC + "www.smoked.vip");
         }
 
         status: {
