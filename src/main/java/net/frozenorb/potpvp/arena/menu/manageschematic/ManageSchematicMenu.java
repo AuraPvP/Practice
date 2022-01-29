@@ -72,27 +72,8 @@ public final class ManageSchematicMenu extends Menu {
         buttons.put(24, new BooleanTraitButton<>(schematic, "BuildUHC Only", ArenaSchematic::setBuildUHCOnly, ArenaSchematic::isBuildUHCOnly, save));
         buttons.put(25, new BooleanTraitButton<>(schematic, "HCF Only", ArenaSchematic::setHCFOnly, ArenaSchematic::isHCFOnly, save));
         buttons.put(26, new BooleanTraitButton<>(schematic, "Team Fights Only", ArenaSchematic::setTeamFightsOnly, ArenaSchematic::isTeamFightsOnly, save));
-        buttons.put(27, new Button() {
-            @Override
-            public String getName(Player player) {
-                return ChatColor.GREEN + "Qrakn Game Events";
-            }
-
-            @Override
-            public List<String> getDescription(Player player) {
-                return Collections.singletonList(ChatColor.GRAY + "Manage which events can utilize this arena.");
-            }
-
-            @Override
-            public Material getMaterial(Player player) {
-                return Material.EMERALD;
-            }
-
-            @Override
-            public void clicked(Player player, int slot, ClickType clickType, InventoryView view) {
-                new ManageEventsMenu(schematic).openMenu(player);
-            }
-        });
+        buttons.put(27, new BooleanTraitButton<>(schematic, "BaseRaiding Only", ArenaSchematic::setBaseRaidingOnly, ArenaSchematic::isBaseRaidingOnly, save));
+        buttons.put(28, new BooleanTraitButton<>(schematic, "PearlFight Only", ArenaSchematic::setPearlFightOnly, ArenaSchematic::isPearlFightOnly, save));
 
         return buttons;
     }

@@ -34,10 +34,10 @@ final class MatchParticipantLayoutProvider implements BiConsumer<Player, TabLayo
                 // Column 1
                 // we handle duels a bit differently
                 if (!duel) {
-                    tabLayout.set(0, 3, ChatColor.GREEN + ChatColor.BOLD.toString() + "Team " + ChatColor.GREEN + "(" + ourTeam.getAliveMembers().size() + "/" + ourTeam.getAllMembers().size() + ")");
+                    tabLayout.set(0, 4, ChatColor.GREEN + ChatColor.BOLD.toString() + "Team " + ChatColor.GREEN + "(" + ourTeam.getAliveMembers().size() + "/" + ourTeam.getAllMembers().size() + ")");
                 } else {
-                    tabLayout.set(1, 2, ChatColor.RED + ChatColor.BOLD.toString() + "Match");
-                    tabLayout.set(0, 3, ChatColor.GREEN + ChatColor.BOLD.toString() + "You");
+                    tabLayout.set(1, 3, ChatColor.RED + ChatColor.BOLD.toString() + "Match");
+                    tabLayout.set(0, 4, ChatColor.GREEN + ChatColor.BOLD.toString() + "You");
                 }
                 renderTeamMemberOverviewEntries(tabLayout, ourTeam, 0, 4, ChatColor.GREEN);
             }
@@ -46,17 +46,17 @@ final class MatchParticipantLayoutProvider implements BiConsumer<Player, TabLayo
                 // Column 3
                 // we handle duels a bit differently
                 if (!duel) {
-                    tabLayout.set(2, 3, ChatColor.RED + ChatColor.BOLD.toString() + "Enemies " + ChatColor.RED + "(" + otherTeam.getAliveMembers().size() + "/" + otherTeam.getAllMembers().size() + ")");
+                    tabLayout.set(2, 4, ChatColor.RED + ChatColor.BOLD.toString() + "Enemies " + ChatColor.RED + "(" + otherTeam.getAliveMembers().size() + "/" + otherTeam.getAllMembers().size() + ")");
                 } else {
-                    tabLayout.set(2, 3, ChatColor.RED + ChatColor.BOLD.toString() + "Opponent");
+                    tabLayout.set(2, 4, ChatColor.RED + ChatColor.BOLD.toString() + "Opponent");
                 }
                 renderTeamMemberOverviewEntries(tabLayout, otherTeam, 2, 4, ChatColor.RED);
             }
         } else { // it's an FFA or something else like that
-            tabLayout.set(1, 3, ChatColor.BLUE + ChatColor.BOLD.toString() + "Party FFA");
+            tabLayout.set(1, 4, ChatColor.BLUE + ChatColor.BOLD.toString() + "Party FFA");
 
             int x = 0;
-            int y = 4;
+            int y = 5;
 
             Map<String, Integer> entries = new LinkedHashMap<>();
 

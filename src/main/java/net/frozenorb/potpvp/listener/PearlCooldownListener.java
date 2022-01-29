@@ -126,4 +126,9 @@ public final class PearlCooldownListener implements Listener {
         }
     }
 
+
+    public void clearCooldown(Player player) {
+        pearlCooldown.remove(player.getUniqueId());
+    }
+
 }

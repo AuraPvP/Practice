@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Predicate;
 
 import net.frozenorb.potpvp.PotPvPND;
+import net.frozenorb.potpvp.match.listener.MatchBaseRaidingListener;
 import net.frozenorb.potpvp.match.listener.MatchBoxingListener;
 import net.frozenorb.potpvp.match.listener.MatchHealthDisplayListener;
 import net.frozenorb.potpvp.match.listener.MatchPearlFightListener;
@@ -69,6 +70,7 @@ public final class MatchHandler {
         Bukkit.getPluginManager().registerEvents(new MatchBuildListener(), PotPvPND.getInstance());
         Bukkit.getPluginManager().registerEvents(new MatchComboListener(), PotPvPND.getInstance());
         Bukkit.getPluginManager().registerEvents(new MatchBoxingListener(), PotPvPND.getInstance());
+        Bukkit.getPluginManager().registerEvents(new MatchBaseRaidingListener(), PotPvPND.getInstance());
         Bukkit.getPluginManager().registerEvents(new MatchPearlFightListener(), PotPvPND.getInstance());
         Bukkit.getPluginManager().registerEvents(new MatchCountdownListener(), PotPvPND.getInstance());
         Bukkit.getPluginManager().registerEvents(new MatchDeathMessageListener(), PotPvPND.getInstance());
@@ -168,6 +170,8 @@ public final class MatchHandler {
         if (kitId.equals("Spleef")) return schematic.isSpleefOnly();
         if (kitId.equals("Sumo")) return schematic.isSumoOnly();
         if (kitId.equals("HCF")) return schematic.isHCFOnly();
+        if (kitId.equals("BaseRaiding")) return schematic.isBaseRaidingOnly();
+        if (kitId.equals("PearlFight")) return schematic.isPearlFightOnly();
         if (kitType.equals(KitType.teamFight)) return schematic.isTeamFightsOnly();
 
         if (schematic.isArcherOnly()) return kitId.equals("Archer");
@@ -175,6 +179,8 @@ public final class MatchHandler {
         if (schematic.isSpleefOnly()) return kitId.equals("Spleef");
         if (schematic.isSumoOnly()) return kitId.equals("Sumo");
         if (schematic.isHCFOnly()) return kitId.equals("HCF");
+        if (schematic.isBaseRaidingOnly()) return kitId.equals("BaseRaiding");
+        if (schematic.isPearlFightOnly()) return kitId.equals("PearlFight");
 
         return true;
     }

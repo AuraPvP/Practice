@@ -48,7 +48,7 @@ public class ManageKitTypeMenu extends Menu {
         for (int i = 1; i <= 8; i++) {
             buttons.put(getSlot(i, 1), Button.placeholder(Material.OBSIDIAN));
         }
-
+        buttons.put(getSlot(0, 0), new BooleanTraitButton<>(type, "Hidden In Only Queues", KitType::setHiddenInOnlyQueues, KitType::isHiddenInOnlyQueues, KitType::saveAsync));
         buttons.put(getSlot(0, 1), new BooleanTraitButton<>(type, "Hidden", KitType::setHidden, KitType::isHidden, KitType::saveAsync));
         buttons.put(getSlot(0, 2), new BooleanTraitButton<>(type, "Editor Item Spawn", KitType::setEditorSpawnAllowed, KitType::isEditorSpawnAllowed, KitType::saveAsync));
         buttons.put(getSlot(0, 3), new BooleanTraitButton<>(type, "Health Shown", KitType::setHealthShown, KitType::isHealthShown, KitType::saveAsync));

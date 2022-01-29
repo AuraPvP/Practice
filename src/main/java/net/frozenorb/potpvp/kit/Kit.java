@@ -52,6 +52,36 @@ public final class Kit {
         Bukkit.getScheduler().runTaskLater(PotPvPND.getInstance(), player::updateInventory, 1L);
     }
 
+    public void applyTrapper(Player player) {
+        PatchedPlayerUtils.resetInventory(player);
+
+        if(KitType.byId("Trapper") == null) {
+            return;
+        }
+
+        // we don't let players actually customize their armor, we just apply default
+        player.getInventory().setArmorContents(KitType.byId("Trapper").getDefaultArmor());
+        player.getInventory().setContents(KitType.byId("Trapper").getDefaultInventory());
+
+        Bukkit.getScheduler().runTaskLater(PotPvPND.getInstance(), player::updateInventory, 1L);
+    }
+
+    public void applyRaider(Player player) {
+        PatchedPlayerUtils.resetInventory(player);
+
+        if(KitType.byId("Raider") == null) {
+            return;
+        }
+
+        // we don't let players actually customize their armor, we just apply default
+        player.getInventory().setArmorContents(KitType.byId("Raider").getDefaultArmor());
+        player.getInventory().setContents(KitType.byId("Raider").getDefaultInventory());
+
+        Bukkit.getScheduler().runTaskLater(PotPvPND.getInstance(), player::updateInventory, 1L);
+    }
+
+
+
     public int countHeals() {
         return ItemUtils.countStacksMatching(inventoryContents, ItemUtils.INSTANT_HEAL_POTION_PREDICATE);
     }

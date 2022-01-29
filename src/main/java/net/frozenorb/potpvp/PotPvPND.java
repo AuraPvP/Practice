@@ -138,6 +138,7 @@ public final class PotPvPND extends JavaPlugin {
     private EloHandler eloHandler;
     private DivisionHandler divisionHandler;
     private PvPClassHandler pvpClassHandler;
+    private PearlCooldownListener pearlCooldownListener;
     //From qLib
     public Redis redis;
     public CommandHandler commandHandler;
@@ -222,6 +223,7 @@ public final class PotPvPND extends JavaPlugin {
         followHandler = new FollowHandler();
         eloHandler = new EloHandler();
         pvpClassHandler = new PvPClassHandler();
+        pearlCooldownListener = new PearlCooldownListener();
 
         setupChat();
 
@@ -230,7 +232,7 @@ public final class PotPvPND extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChatFormatListener(), this);
         getServer().getPluginManager().registerEvents(new ChatToggleListener(), this);
         getServer().getPluginManager().registerEvents(new NightModeListener(), this);
-        getServer().getPluginManager().registerEvents(new PearlCooldownListener(), this);
+        getServer().getPluginManager().registerEvents(pearlCooldownListener, this);
         getServer().getPluginManager().registerEvents(new RankedMatchQualificationListener(), this);
         getServer().getPluginManager().registerEvents(new TabCompleteListener(), this);
         getServer().getPluginManager().registerEvents(new StatisticsHandler(), this);

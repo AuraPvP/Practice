@@ -23,6 +23,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public final class KitSelectionListener implements Listener {
 
@@ -166,19 +168,41 @@ public final class KitSelectionListener implements Listener {
 
         for (Kit kit : kitHandler.getKits(player, kitType)) {
             if (kit.isSelectionItem(clickedItem)) {
+                if(match.getKitType().getId().equals("BaseRaiding")) {
+                    if(player.hasMetadata("raider")) {
+                        kit.applyRaider(player);
+                    } else if(player.hasMetadata("trapper")) {
+                        kit.applyTrapper(player);
+                    }
+
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1000000, 1));
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 1000000, 0));
+                } else {
                 kit.apply(player);
                 player.sendMessage(ChatColor.YELLOW + "You equipped your \"" + kit.getName() + "\" " + kitType.getDisplayName() + " kit.");
                 return;
+                }
             }
         }
 
         Kit defaultKit = Kit.ofDefaultKit(kitType);
 
         if (defaultKit.isSelectionItem(clickedItem)) {
+            if(match.getKitType().getId().equals("BaseRaiding")) {
+                if(player.hasMetadata("raider")) {
+                    defaultKit.applyRaider(player);
+                    player.sendMessage(ChatColor.YELLOW + "You equipped the default kit for Raider.");
+                } else if(player.hasMetadata("trapper")) {
+                    defaultKit.applyTrapper(player);
+                    player.sendMessage(ChatColor.YELLOW + "You equipped the default kit for Trapper.");
+                }
+
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1000000, 1));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 1000000, 0));
+            } else {
             defaultKit.apply(player);
             player.sendMessage(ChatColor.YELLOW + "You equipped the default kit for " + kitType.getDisplayName() + ".");
         }
-
+      }
     }
-
 }

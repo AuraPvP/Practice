@@ -60,6 +60,7 @@ net\frozenorb\potpvp\party\Party.class
 net\amoebaman\util\ArrayWrapper.class
 net\frozenorb\potpvp\queue\MatchQueue.class
 net\frozenorb\potpvp\util\event\HourEvent.class
+net\frozenorb\potpvp\match\Match$2.class
 net\frozenorb\potpvp\command\KillCommands.class
 net\frozenorb\potpvp\match\listener\MatchWizardListener$1.class
 net\frozenorb\potpvp\postmatchinv\menu\PostMatchMenu.class
@@ -84,7 +85,6 @@ net\frozenorb\potpvp\match\listener\MatchDurationLimitListener.class
 net\frozenorb\potpvp\setting\command\ToggleDuelCommand.class
 mkremins\fanciful\JsonString.class
 net\frozenorb\potpvp\queue\listener\QueueGeneralListener.class
-net\frozenorb\potpvp\arena\menu\manageschematic\ManageSchematicMenu$1.class
 net\frozenorb\potpvp\listener\PearlCooldownListener$1.class
 net\frozenorb\potpvp\util\LocationUtil.class
 net\frozenorb\potpvp\PotPvPCache.class
@@ -222,6 +222,7 @@ net\frozenorb\potpvp\kittype\command\KitDeleteCommand.class
 net\frozenorb\potpvp\kittype\menu\manage\ManageKitTypeMenu$1.class
 net\frozenorb\potpvp\arena\menu\manageschematic\TeleportToModelButton.class
 net\frozenorb\potpvp\match\event\MatchSpectatorJoinEvent.class
+net\frozenorb\potpvp\scoreboard\PotPvPScoreboardConfiguration$AnimatedTitleGetter.class
 net\frozenorb\potpvp\match\event\MatchStartEvent.class
 net\frozenorb\potpvp\util\ItemUtils.class
 net\frozenorb\potpvp\arena\menu\manageschematic\SchematicStatusButton.class
@@ -243,6 +244,7 @@ net\frozenorb\potpvp\command\BuildCommand.class
 net\frozenorb\potpvp\kit\menu\kits\KitRenameButton.class
 net\frozenorb\potpvp\command\EditPotionModifyCommand.class
 net\frozenorb\potpvp\command\SetSpawnCommand.class
+net\frozenorb\potpvp\command\ResetPearlTimerCommand.class
 net\frozenorb\potpvp\kit\listener\KitLoadListener.class
 net\frozenorb\potpvp\kittype\command\KitSetHardcoreHealingCommand.class
 mkremins\fanciful\TextualComponent$ComplexTextTypeComponent.class
@@ -338,6 +340,7 @@ net\frozenorb\potpvp\pvpclasses\pvpclasses\bard\BardEffect.class
 net\frozenorb\potpvp\command\ShowMeTheDoorCommand.class
 net\frozenorb\potpvp\match\listener\MatchBuildListener.class
 net\frozenorb\potpvp\listener\BowHealthListener.class
+net\frozenorb\potpvp\match\listener\MatchBaseRaidingListener.class
 net\frozenorb\potpvp\kit\KitHandler.class
 net\frozenorb\potpvp\setting\Setting.class
 net\frozenorb\potpvp\kit\listener\KitEditorListener.class

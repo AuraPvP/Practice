@@ -159,10 +159,11 @@ public final class Match {
                 Player player = Bukkit.getPlayer(playerUuid);
                 
                 playingCache.put(player.getUniqueId(), this);
-                
+
+                Match match = PotPvPND.getInstance().getMatchHandler().getMatchPlaying(player);
                 Location spawn = (team == teams.get(0) ? arena.getTeam1Spawn() : arena.getTeam2Spawn()).clone();
                 Vector oldDirection = spawn.getDirection();
-                
+
                 Block block = spawn.getBlock();
                 while (block.getRelative(BlockFace.DOWN).getType() == Material.AIR) {
                     block = block.getRelative(BlockFace.DOWN);
@@ -191,7 +192,7 @@ public final class Match {
         // then we update vis, otherwise the update code will see 'partial' views of the
         // match
         updateVisiblity.forEach(VisibilityUtils::updateVisibilityFlicker);
-        
+
         Bukkit.getPluginManager().callEvent(new MatchCountdownStartEvent(this));
         
         new BukkitRunnable() {
@@ -632,7 +633,28 @@ public final class Match {
      * allows building.
      */
     public boolean canBeBroken(Block block) {
-        return (kitType.getId().equals("Spleef") && (block.getType() == Material.SNOW_BLOCK || block.getType() == Material.GRASS || block.getType() == Material.DIRT)) || placedBlocks.contains(block.getLocation().toVector().toBlockVector());
+        if(placedBlocks.contains(block.getLocation().toVector().toBlockVector())) {
+            return true;
+        }
+
+        if(kitType.getId().equals("Spleef")) {
+            switch (block.getType()) {
+                case SNOW_BLOCK:
+                case GRASS:
+                case DIRT:
+                    return true;
+            }
+        } else if(kitType.getId().equals("BaseRaiding")) {
+            if(block.getType().name().endsWith("_STAIRS")) {
+                return true;
+            }
+            switch (block.getType()) {
+                case WOOL:
+                case STAINED_GLASS:
+                    return true;
+            }
+        }
+        return false;
     }
     
 }

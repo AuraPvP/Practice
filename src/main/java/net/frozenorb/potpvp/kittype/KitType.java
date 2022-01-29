@@ -108,6 +108,8 @@ public final class KitType {
      */
     @Getter @Setter private boolean hidden = false;
 
+    @Getter @Setter private boolean hiddenInOnlyQueues = false;
+
     @Getter @Setter public String displayName;
 
     /**

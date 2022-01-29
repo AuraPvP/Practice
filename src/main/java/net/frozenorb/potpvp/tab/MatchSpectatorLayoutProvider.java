@@ -39,9 +39,9 @@ final class MatchSpectatorLayoutProvider implements BiConsumer<Player, TabLayout
                 {
                     // Column 1
                     if (!duel) {
-                        tabLayout.set(0, 3, ChatColor.GREEN + ChatColor.BOLD.toString() + "Team " + ChatColor.GREEN + "(" + ourTeam.getAliveMembers().size() + "/" + ourTeam.getAllMembers().size() + ")");
+                        tabLayout.set(0, 4, ChatColor.GREEN + ChatColor.BOLD.toString() + "Team " + ChatColor.GREEN + "(" + ourTeam.getAliveMembers().size() + "/" + ourTeam.getAllMembers().size() + ")");
                     } else {
-                        tabLayout.set(0, 3, ChatColor.GREEN + ChatColor.BOLD.toString() + "You");
+                        tabLayout.set(0, 4, ChatColor.GREEN + ChatColor.BOLD.toString() + "You");
                     }
                     renderTeamMemberOverviewEntries(tabLayout, ourTeam, 0, 4, ChatColor.GREEN);
                 }
@@ -49,9 +49,9 @@ final class MatchSpectatorLayoutProvider implements BiConsumer<Player, TabLayout
                 {
                     // Column 3
                     if (!duel) {
-                        tabLayout.set(2, 3, ChatColor.RED + ChatColor.BOLD.toString() + "Enemies " + ChatColor.RED + "(" + otherTeam.getAliveMembers().size() + "/" + otherTeam.getAllMembers().size() + ")");
+                        tabLayout.set(2, 4, ChatColor.RED + ChatColor.BOLD.toString() + "Enemies " + ChatColor.RED + "(" + otherTeam.getAliveMembers().size() + "/" + otherTeam.getAllMembers().size() + ")");
                     } else {
-                        tabLayout.set(2, 3, ChatColor.RED + ChatColor.BOLD.toString() + "Opponent");
+                        tabLayout.set(2, 4, ChatColor.RED + ChatColor.BOLD.toString() + "Opponent");
                     }
                     renderTeamMemberOverviewEntries(tabLayout, otherTeam, 2, 4, ChatColor.RED);
                 }
@@ -62,9 +62,9 @@ final class MatchSpectatorLayoutProvider implements BiConsumer<Player, TabLayout
                     // Column 1
                     // we handle duels a bit differently
                     if (!duel) {
-                        tabLayout.set(0, 3, ChatColor.LIGHT_PURPLE + ChatColor.BOLD.toString() + "Team One (" + teamOne.getAliveMembers().size() + "/" + teamOne.getAllMembers().size() + ")");
+                        tabLayout.set(0, 4, ChatColor.LIGHT_PURPLE + ChatColor.BOLD.toString() + "Team One (" + teamOne.getAliveMembers().size() + "/" + teamOne.getAllMembers().size() + ")");
                     } else {
-                        tabLayout.set(0, 3, ChatColor.LIGHT_PURPLE + ChatColor.BOLD.toString() + "Player One");
+                        tabLayout.set(0, 4, ChatColor.LIGHT_PURPLE + ChatColor.BOLD.toString() + "Player One");
                     }
                     renderTeamMemberOverviewEntries(tabLayout, teamOne, 0, 4, ChatColor.LIGHT_PURPLE);
                 }
@@ -73,19 +73,19 @@ final class MatchSpectatorLayoutProvider implements BiConsumer<Player, TabLayout
                     // Column 3
                     // we handle duels a bit differently
                     if (!duel) {
-                        tabLayout.set(2, 3, ChatColor.AQUA + ChatColor.BOLD.toString() + "Team Two (" + teamTwo.getAliveMembers().size() + "/" + teamTwo.getAllMembers().size() + ")");
+                        tabLayout.set(2, 4, ChatColor.AQUA + ChatColor.BOLD.toString() + "Team Two (" + teamTwo.getAliveMembers().size() + "/" + teamTwo.getAllMembers().size() + ")");
                     } else {
-                        tabLayout.set(2, 3, ChatColor.AQUA + ChatColor.BOLD.toString() + "Player Two");
+                        tabLayout.set(2, 4, ChatColor.AQUA + ChatColor.BOLD.toString() + "Player Two");
                     }
                     renderTeamMemberOverviewEntries(tabLayout, teamTwo, 2, 4, ChatColor.AQUA);
                 }
 
             }
         } else { // it's an FFA or something else like that
-            tabLayout.set(1, 3, ChatColor.BLUE + ChatColor.BOLD.toString() + "Party FFA");
+            tabLayout.set(1, 4, ChatColor.BLUE + ChatColor.BOLD.toString() + "Party FFA");
 
             int x = 0;
-            int y = 4;
+            int y = 5;
 
             Map<String, Integer> entries = new LinkedHashMap<>();
 

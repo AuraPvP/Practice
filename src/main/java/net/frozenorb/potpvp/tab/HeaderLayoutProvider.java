@@ -5,6 +5,7 @@ import java.util.function.BiConsumer;
 import net.frozenorb.potpvp.PotPvPND;
 import net.frozenorb.potpvp.kt.tab.TabLayout;
 import net.frozenorb.potpvp.kt.util.PlayerUtils;
+import net.frozenorb.potpvp.scoreboard.PotPvPScoreboardConfiguration.AnimatedTitleGetter;
 import net.frozenorb.potpvp.util.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,7 +16,7 @@ final class HeaderLayoutProvider implements BiConsumer<Player, TabLayout> {
     @Override
     public void accept(Player player, TabLayout tabLayout) {
         header: {
-            tabLayout.set(1, 1, CC.translate("&4&lNA Practice"));
+            tabLayout.set(1, 1, CC.translate(new AnimatedTitleGetter(3, PotPvPND.getInstance().getMainConfig().getStringList("Practice.Scoreboard-Animations")).getTitle(player)));
             tabLayout.set(0, 2, CC.translate("&cOnline: &f" + Bukkit.getOnlinePlayers().size()));
             tabLayout.set(2, 2, ChatColor.GRAY + "&cFighting: &f" + PotPvPND.getInstance().getCache().getFightsCount());
             tabLayout.set(0, 18, ChatColor.GRAY + "" + ChatColor.ITALIC + "smoked.vip");

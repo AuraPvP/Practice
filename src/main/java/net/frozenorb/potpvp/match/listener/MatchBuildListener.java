@@ -1,24 +1,59 @@
 package net.frozenorb.potpvp.match.listener;
 
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import net.frozenorb.potpvp.PotPvPND;
 import net.frozenorb.potpvp.match.Match;
 import net.frozenorb.potpvp.match.MatchHandler;
 import net.frozenorb.potpvp.match.MatchState;
 import net.frozenorb.potpvp.kt.util.Cuboid;
+import net.frozenorb.potpvp.util.CC;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockFormEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerBucketEmptyEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.material.MaterialData;
 
 public final class MatchBuildListener implements Listener {
 
     private static final int SEARCH_RADIUS = 3;
+    private static final ImmutableSet<Material> BLOCK_RIGHT_CLICK_DENY = Sets.immutableEnumSet(
+        Material.BED,
+        Material.BED_BLOCK,
+        Material.BEACON,
+        Material.FENCE_GATE,
+        Material.IRON_DOOR,
+        Material.TRAP_DOOR,
+        Material.WOOD_DOOR,
+        Material.WOODEN_DOOR,
+        Material.IRON_DOOR_BLOCK,
+        Material.CHEST,
+        Material.TRAPPED_CHEST,
+        Material.FURNACE,
+        Material.BURNING_FURNACE,
+        Material.BREWING_STAND,
+        Material.HOPPER,
+        Material.DROPPER,
+        Material.DISPENSER,
+        Material.STONE_BUTTON,
+        Material.WOOD_BUTTON,
+        Material.ENCHANTMENT_TABLE,
+        Material.WORKBENCH,
+        Material.ANVIL,
+        Material.LEVER,
+        Material.FIRE
+    );
+
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
@@ -35,10 +70,33 @@ public final class MatchBuildListener implements Listener {
         if (!match.getKitType().isBuildingAllowed() || match.getState() != MatchState.IN_PROGRESS) {
             event.setCancelled(true);
         } else {
+            if(player.hasMetadata("raider")) {
+                player.sendMessage(CC.translate("&fYou cannot break blocks in the territory of &cTrapper&f."));
+                event.setCancelled(true);
+            }
             if (!match.canBeBroken(event.getBlock())) {
                 event.setCancelled(true);
             }
         }
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    public void onPlayerInteract(PlayerInteractEvent event) {
+      if (!event.hasBlock()) {
+        return;
+      }
+
+      Action action = event.getAction();
+      Player player = event.getPlayer();
+      if (action == Action.RIGHT_CLICK_BLOCK) {
+        if (player.hasMetadata("raider")) {
+          if (BLOCK_RIGHT_CLICK_DENY.contains(event.getClickedBlock().getType())) {
+            player.sendMessage(
+                CC.translate("&fYou cannot use that in the territory of &cTrapper&f."));
+            event.setCancelled(true);
+          }
+        }
+      }
     }
 
     @EventHandler
@@ -52,6 +110,13 @@ public final class MatchBuildListener implements Listener {
         }
 
         Match match = matchHandler.getMatchPlaying(player);
+
+        if(match.getKitType().getId().equals("BaseRaiding")) {
+            if(player.hasMetadata("raider")) {
+                player.sendMessage(CC.translate("&fYou cannot place blocks in the territory of &cTrapper&f."));
+                event.setCancelled(true);
+            }
+        }
 
         if (!match.getKitType().isBuildingAllowed()) {
             event.setCancelled(true);
@@ -89,6 +154,13 @@ public final class MatchBuildListener implements Listener {
         }
 
         Match match = matchHandler.getMatchPlaying(player);
+
+        if(match.getKitType().getId().equals("BaseRaiding")) {
+            if(player.hasMetadata("raider")) {
+                player.sendMessage(CC.translate("&fYou cannot place blocks in the territory of &cTrapper&f."));
+                event.setCancelled(true);
+            }
+        }
 
         if (!match.getKitType().isBuildingAllowed() || match.getState() != MatchState.IN_PROGRESS) {
             event.setCancelled(true);

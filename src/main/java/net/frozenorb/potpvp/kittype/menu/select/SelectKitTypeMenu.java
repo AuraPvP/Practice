@@ -49,6 +49,12 @@ public final class SelectKitTypeMenu extends Menu {
                 continue;
             }
 
+            if(!player.isOp() && kitType.isHiddenInOnlyQueues()) {
+                if(player.getOpenInventory().getTitle().contains("Queue")) {
+                    continue;
+                }
+            }
+
             buttons.put(index++, new KitTypeButton(kitType, callback));
         }
 

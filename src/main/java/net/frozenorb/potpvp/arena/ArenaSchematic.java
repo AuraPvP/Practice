@@ -78,6 +78,10 @@ public final class ArenaSchematic {
 
     @Getter @Setter private boolean HCFOnly = false;
 
+    @Getter @Setter private boolean pearlFightOnly = false;
+
+    @Getter @Setter private boolean baseRaidingOnly = false;
+
     @Getter @Setter private String eventName = null;
 
     /**

@@ -8,5 +8,16 @@ Redis:
     Enabled: true
     Password: "pqYl8xJC4MJFCzGGij7Dw5EeF7gcIvd3"
 Practice:
-  Scoreboard-Header: "&5&lEU Practice"
+  Scoreboard-Header: "&4&lEU Practice"
+  Scoreboard-Animations:
+    - "&4&lPRACTICE"
+    - "&c&lP&4&lRACTICE"
+    - "&4&lP&c&lR&4&lACTICE"
+    - "&4&lPR&c&lA&4&lCTICE"
+    - "&4&lPRA&c&lC&4&lTICE"
+    - "&4&lPRAC&c&lT&4&lICE"
+    - "&4&lPRACT&c&lI&4&lCE"
+    - "&4&lPRACT&c&lI&4&lCE"
+    - "&4&lPRACTI&c&lC&4&lE"
+    - "&4&lPRACTIC&c&lE"
   Matches-Required-Ranked: 10
